@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <title><%=title %></title>
+  </head>
+
+  <body>
+    <h1>Halaman supervisor</h1>
+    <a href = "/">Back To Home</a>
+    <table border="1px solid black" width = "800px;" style="margin-top:20px;">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>NAME</th>
+          <th>email</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%data.forEach( row => { %>
+        <tr>
+          <td><%= row.id %></td>
+          <td><%= row.nama %></td>
+          <td><%= row.email %></td>
+          <td>
+            <a href="/supervisor/edit/<%=row.id%>">Edit</a>
+            <a href="/supervisor/delete/<%=row.id%>">Hapus</a>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <form class="" style="margin-top:10px;" action="/supervisor" method="POST">
+      <input type="text" name="nama" placeholder="Masukan Nama Disini">
+      <input type="text" name="email" placeholder="Masukan Email">
+      <input type="submit" value="SUBMIT">
+    </form>
+  </body>
+</html>

@@ -1,7 +1,5 @@
 const express = require('express')
-const app = express()
-const sqlite3 = require('sqlite3').verbose()
-const db = new sqlite3.Database('db/database.db')
+const app = express.Router()
 const bodyParser = require('body-parser')
 
 // set view engine
@@ -13,12 +11,13 @@ app.use(bodyParser.json())
 
 // require ROUTES
 let index = require('./routes/index.js')
-let contacts = require('./routes/supervisor.js')
-let addresses = require('./routes/project.js')
+let supervisor= require('./routes/supervisor.js')
+let project = require('./routes/project.js')
 
 app.use('/', index)
-app.use('/contacts', contacts)
-app.use('/addresses', addresses)
+app.use('/supervisor', supervisor)
+app.use('/project', project)
+
 
 // LOCALHOST PORT TO BE USED
 app.listen(3000, function(req,res) {
